@@ -1,6 +1,7 @@
 'use client';
 
 import axios from 'axios';
+import type { IconType } from 'react-icons';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc'
 import { useCallback, useState } from 'react';
@@ -16,6 +17,7 @@ import useRegisterModal from '@/app/hooks/useRegisterModal'
 import Modal from './Modal'
 import Heading from '../Heading';
 import Input from '../Inputs/Input';
+import Button from '../Button'
 
 type TRegisterModalProps = {}
 
@@ -82,6 +84,34 @@ const RegisterModal: React.FC<TRegisterModalProps> = props => {
     </div>
   )
 
+  const IconGoogle: IconType = (props) => (<FcGoogle size={24} {...props} />)
+
+  const footerContent = (
+    <div className='flex flex-col gap-4 mt-3'>
+      <hr />
+      <Button
+        outline
+        label='Continue with Google'
+        icon={IconGoogle}
+        onClick={() => { }}
+      />
+      <Button
+        outline
+        label='Continue with Github'
+        icon={AiFillGithub}
+        onClick={() => { }}
+      />
+      <div className='text-neutral-500 text-center mt-4 font-light'>
+        <div className='flex flex-row items-center justify-center gap-2'>
+          <div>Already have an account?</div>
+          <div
+            className='text-neutral-800 cursor-pointer hover:underline'
+            onClick={registerModal.onClose}>Log in</div>
+        </div>
+      </div>
+    </div>
+  )
+
   return (
     <Modal
       disabled={isLoading}
@@ -91,6 +121,7 @@ const RegisterModal: React.FC<TRegisterModalProps> = props => {
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
+      footer={footerContent}
     />
   )
 }
