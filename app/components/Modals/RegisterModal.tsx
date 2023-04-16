@@ -4,7 +4,7 @@ import axios from 'axios';
 import type { IconType } from 'react-icons';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc'
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 import {
   FieldValues,
@@ -12,6 +12,7 @@ import {
   useForm
 } from 'react-hook-form'
 import { toast } from 'react-hot-toast';
+import { signIn } from 'next-auth/react';
 import useRegisterModal from '@/app/hooks/useRegisterModal'
 
 import Modal from './Modal'
@@ -99,7 +100,7 @@ const RegisterModal: React.FC<TRegisterModalProps> = props => {
         outline
         label='Continue with Github'
         icon={AiFillGithub}
-        onClick={() => { }}
+        onClick={() => { signIn('github') }}
       />
       <div className='text-neutral-500 text-center mt-4 font-light'>
         <div className='flex flex-row items-center justify-center gap-2'>
