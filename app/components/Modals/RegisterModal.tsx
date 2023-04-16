@@ -94,7 +94,7 @@ const RegisterModal: React.FC<TRegisterModalProps> = props => {
         outline
         label='Continue with Google'
         icon={IconGoogle}
-        onClick={() => { }}
+        onClick={() => { signIn('google') }}
       />
       <Button
         outline
