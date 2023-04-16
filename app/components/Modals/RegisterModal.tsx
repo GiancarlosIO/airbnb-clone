@@ -10,6 +10,7 @@ import {
   SubmitHandler,
   useForm
 } from 'react-hook-form'
+import { toast } from 'react-hot-toast';
 import useRegisterModal from '@/app/hooks/useRegisterModal'
 
 import Modal from './Modal'
@@ -36,7 +37,6 @@ const RegisterModal: React.FC<TRegisterModalProps> = props => {
     }
   })
 
-
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true)
 
@@ -44,6 +44,7 @@ const RegisterModal: React.FC<TRegisterModalProps> = props => {
       registerModal.onClose()
     }).catch(err => {
       console.error(err)
+      toast.error('Something went wrong.')
     }).finally(() => {
       setIsLoading(false)
     })
